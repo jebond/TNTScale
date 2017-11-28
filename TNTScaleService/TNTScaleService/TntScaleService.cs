@@ -53,16 +53,7 @@ namespace TNTScaleService
                 {
 
                 }
-
-                if (weight > 0.0m)
-                {
-                    SendMessage(weight);
-                }
-                else
-                {
-                    //Do nothing if there is no change.
-                }
-                lastweight = weight;
+                SendMessage(weight);
             }
             else
             {
@@ -122,15 +113,13 @@ namespace TNTScaleService
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var responseText = streamReader.ReadToEnd();
-                    Console.WriteLine(responseText);
-
                     //Now you have your response.
                     //or false depending on information in the response     
                 }
             }
             catch (WebException ex)
             {
-                return "Failure Exception";
+                File.AppendAllText(HttpLogFile, "Error on Message" + ex.Message + "RESP" + ex.Response + "Stack" + ex.StackTrace + Environment.NewLine);
             }
             return "Successful";
         }
