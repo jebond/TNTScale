@@ -107,6 +107,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="format.zpl" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
