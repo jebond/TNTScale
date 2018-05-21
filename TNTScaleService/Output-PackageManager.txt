@@ -1,0 +1,20 @@
+﻿
+
+Attempting to gather dependency information for package 'Nancy.1.4.4' with respect to project 'TNTScaleService', targeting '.NETFramework,Version=v4.6.1'
+Gathering dependency information took 516.1 ms
+Attempting to resolve dependencies for package 'Nancy.1.4.4' with DependencyBehavior 'Lowest'
+Resolving dependency information took 0 ms
+Resolving actions to install package 'Nancy.1.4.4'
+Resolved actions to install package 'Nancy.1.4.4'
+Retrieving package 'Nancy 1.4.4' from 'nuget.org'.
+  GET https://api.nuget.org/v3-flatcontainer/nancy/1.4.4/nancy.1.4.4.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/nancy/1.4.4/nancy.1.4.4.nupkg 334ms
+Installing Nancy 1.4.4.
+Adding package 'Nancy.1.4.4' to folder 'C:\Users\Bond_\Documents\GitHub\TNTScale\TNTScaleService\packages'
+Added package 'Nancy.1.4.4' to folder 'C:\Users\Bond_\Documents\GitHub\TNTScale\TNTScaleService\packages'
+Added package 'Nancy.1.4.4' to 'packages.config'
+Successfully installed 'Nancy 1.4.4' to TNTScaleService
+Executing nuget actions took 2.7 sec
+Time Elapsed: 00:00:03.6583176
+========== Finished ==========
+

@@ -5,6 +5,8 @@ using System.Configuration;
 using System;
 using System.Net;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using Nancy.Hosting.Self;
 
 namespace TNTScaleService
 {
@@ -15,7 +17,9 @@ namespace TNTScaleService
         string ScaleLogFile = ConfigurationManager.AppSettings["LogFileOutput"];
         string HttpLogFile = ConfigurationManager.AppSettings["HttpResponseLog"];
         string debugmode = ConfigurationManager.AppSettings["DebugMode"];
+        string PrintWebServerPort = ConfigurationManager.AppSettings["PrinterWebServerPortNumber"];
         decimal? lastweight = 0;
+        string hostname = Environment.MachineName;
 
         public TnTScaleService()
         {
@@ -24,6 +28,13 @@ namespace TNTScaleService
 
         protected override void OnStart(string[] args)
         {
+            var configuration = new HostConfiguration
+            {
+                UrlReservations = { CreateAutomatically = true }
+            };
+
+            var host = new NancyHost(configuration,new Uri("http://localhost:8088"));
+            host.Start();
             System.Timers.Timer timer = new System.Timers.Timer();
             timer.Interval = ScaleCheckTime;  
             timer.Elapsed += new System.Timers.ElapsedEventHandler(this.OnTimer);
@@ -32,7 +43,6 @@ namespace TNTScaleService
         
         public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
         {
-
             decimal? weight;
             bool? isStable;
 
